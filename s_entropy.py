@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 #----------------
 #Name: s_entropy
-#Version: 1.0.0
+#Version: 1.0.1
 #Date: 2014-05-12
 #----------------
 # A quick script to calculate the Shannon Entropy of a file
@@ -10,7 +10,7 @@ import sys
 import math
 import argparse
 
-parser = argparse.ArgumentParser(add_help=False, description='Welcome to s_entropy v1.0.0! A program which calculates the Shannon Entropy of a file.')
+parser = argparse.ArgumentParser(add_help=False, description='Welcome to s_entropy v1.0.1! A program which calculates the Shannon Entropy of a file.')
 parser.add_argument("-h", action='store_true', help="Display verbose help.")
 parser.add_argument("-s", action='store_true', help="Enable STREAM MODE, which reads the input file a block at a time.  The default block size is 4096 bytes.")
 parser.add_argument("-b", nargs='?', type=int, help="Manually set the block size ,in bytes, for STREAM MODE.", metavar='# bytes')
@@ -20,19 +20,19 @@ args = parser.parse_args()
 block = 4096
 
 if args.h:
-    print('Introduction to s_entropy:')
+    print('Introduction to s_entropy v1.0.1:')
     print('  The s_entropy program calculates the Shannon Entropy of an input file. The')
     print('  output of this calculation is a number between 0 and 8. Where 0 represents')
-    print('  the minimum and 8 represents the maxium amount of randomness, or entropy.')
+    print('  the minimum, and 8 represents the maxium, amount of entropy calculated.')
     print('  For more information on Shannon Entropy please visit the following site:')
     print('    http://www.wikipedia.org/wiki/Entropy_%28information_theory%29')
     print('\nSYNTAX\n  python3 s_entropy.py [-h] [-s] [-b] [-f [filename]]')
     print('\nARGUMENTS')
     print('  -h Displays this help page.')
     print('  -s Enables STREAM MODE, which reads the input file in a block at a time')
-    print('     without utilizing much memory. This method may be slow, but is more')
-    print('     memory-efficient allowing for files larger than available system')
-    print('     RAM to be processed.  The default block size is 4096 bytes.')
+    print('     without utilizing much memory. This method is more memory-efficient,')
+    print('     allowing for files larger than available system RAM to be processed.')
+    print('     The default STREAM MODE block size is 4096 bytes.')
     print('     By default, s_entropy uses RAM MODE, which reads an entire file into')
     print('     RAM before making any calculations.')
     print('  -b Sets the block size for STREAM MODE in bytes.  The default is 4096.')
@@ -85,3 +85,4 @@ if args.f:
     sys.exit()
 
 parser.print_help()
+
