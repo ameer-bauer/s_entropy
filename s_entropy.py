@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 #----------------
 #Name: s_entropy
-#Version: 1.0.2
-#Date: 2014-05-14
+#Version: 1.0.3
+#Date: 2014-05-22
 #----------------
 # A quick script to calculate the Shannon Entropy of a file
 
@@ -10,8 +10,9 @@ import sys
 import math
 import argparse
 
-parser = argparse.ArgumentParser(add_help=False, description='Welcome to s_entropy v1.0.2! A program which calculates the Shannon Entropy of a file.')
+parser = argparse.ArgumentParser(add_help=False, description='Welcome to s_entropy! A program which calculates the Shannon Entropy of a file.')
 parser.add_argument("-h", action='store_true', help="Display verbose help.")
+parser.add_argument("-v", action='store_true', help="Display version information.")
 parser.add_argument("-c", action='store_true', help="Print a BYTE FREQUENCY CHART after the input file is analyzed.")
 parser.add_argument("-s", action='store_true', help="Enable STREAM MODE, which reads the input file a block at a time.  The default block size is 4096 bytes.")
 parser.add_argument("-b", nargs='?', type=int, help="Manually set the block size ,in bytes, for STREAM MODE.", metavar='# bytes')
@@ -19,29 +20,35 @@ parser.add_argument("-f", nargs='?', help="Specify an input file to calculate Sh
 args = parser.parse_args()
 
 block = 4096
+version = "1.0.3"
+
+if args.v:
+    print('s_entropy verison:', version)
+    sys.exit()
 
 if args.h:
-    print('Introduction to s_entropy v1.0.2:')
+    print('Introduction to s_entropy', version)
     print('  The s_entropy program calculates the Shannon Entropy of an input file. The')
     print('  output of this calculation is a number between 0 and 8. Where 0 represents')
     print('  the minimum, and 8 represents the maximum, amount of entropy calculated.')
     print('  For more information on Shannon Entropy please visit the following site:')
     print('    http://www.wikipedia.org/wiki/Entropy_%28information_theory%29')
-    print('\nSYNTAX\n  python3 s_entropy.py [-h] [-c] [-s] [-b] [-f [filename]]')
+    print('\nSYNTAX\n  python3 s_entropy.py [-h] [-v] [-c] [-s] [-b] [-f [filename]]')
     print('\nARGUMENTS')
-    print('  -h Displays this help page.')
+    print('  -h Displays this help page.\n')
+    print('  -v Displays the current version of s_entropy.\n')
     print('  -c Prints a BYTE FREQUENCY CHART (ASCII format), post input file analytics,')
     print('     of any byte values present. (Graphing all non-zero frequency values.)')
     print('     The Maximum Value of the X-axis is the maximum byte frequency encountered')
-    print('     in the input file. (The most prevalent byte value of the input file.)')
+    print('     in the input file. (The most prevalent byte value of the input file.)\n')
     print('  -s Enables STREAM MODE, which reads the input file in a block at a time')
     print('     without utilizing much memory. This method is more memory-efficient,')
     print('     allowing for files larger than available system RAM to be processed.')
     print('     The default STREAM MODE block size is 4096 bytes.')
     print('     By default, s_entropy uses RAM MODE, which reads an entire file into')
-    print('     RAM before making any calculations.')
-    print('  -b Sets the block size for STREAM MODE in bytes.  The default is 4096.')
-    print('  -f <filename> Specifies which file to calculate Shannon Entropy for.')
+    print('     RAM before making any calculations.\n')
+    print('  -b Sets the block size for STREAM MODE in bytes.  The default is 4096.\n')
+    print('  -f <filename> Specifies which file to calculate Shannon Entropy for.\n')
     print('\nEXAMPLES\n  python3 s_entropy.py -f test.rnd')
     print('    Reads in the file test.rnd utilizing RAM MODE and then outputs the name,')
     print('    byte count, and entropy number of the input file test.rnd.')
