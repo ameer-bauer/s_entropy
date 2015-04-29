@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 #----------------
 #Name: s_entropy
-#Version: 1.0.3
-#Date: 2014-05-22
+#Version: 1.0.4
+#Date: 2015-04-28
 #----------------
 # A quick script to calculate the Shannon Entropy of a file
 
@@ -20,10 +20,10 @@ parser.add_argument("-f", nargs='?', help="Specify an input file to calculate Sh
 args = parser.parse_args()
 
 block = 4096
-version = "1.0.3"
+version = "1.0.4"
 
 if args.v:
-    print('s_entropy verison:', version)
+    print('s_entropy version:', version)
     sys.exit()
 
 if args.h:
@@ -33,7 +33,7 @@ if args.h:
     print('  the minimum, and 8 represents the maximum, amount of entropy calculated.')
     print('  For more information on Shannon Entropy please visit the following site:')
     print('    http://www.wikipedia.org/wiki/Entropy_%28information_theory%29')
-    print('\nSYNTAX\n  python3 s_entropy.py [-h] [-v] [-c] [-s] [-b] [-f [filename]]')
+    print('\nSYNTAX\n  python(3) s_entropy.py [-h] [-v] [-c] [-s] [-b] [-f [filename]]')
     print('\nARGUMENTS')
     print('  -h Displays this help page.\n')
     print('  -v Displays the current version of s_entropy.\n')
@@ -49,13 +49,13 @@ if args.h:
     print('     RAM before making any calculations.\n')
     print('  -b Sets the block size for STREAM MODE in bytes.  The default is 4096.\n')
     print('  -f <filename> Specifies which file to calculate Shannon Entropy for.\n')
-    print('\nEXAMPLES\n  python3 s_entropy.py -f test.rnd')
+    print('\nEXAMPLES\n  python(3) s_entropy.py -f test.rnd')
     print('    Reads in the file test.rnd utilizing RAM MODE and then outputs the name,')
     print('    byte count, and entropy number of the input file test.rnd.')
-    print('\n  python3 s_entropy -s -f file.tst')
+    print('\n  python(3) s_entropy -s -f file.tst')
     print('    Reads in the file file.tst utilizing STREAM MODE in 4k blocks and then')
     print('    returns name, byte count, and entropy number of the input file file.tst.')
-    print('\n  python3 s_entropy -s -b 8192 -f foo.bar')
+    print('\n  python(3) s_entropy -s -b 8192 -f foo.bar')
     print('    Reads in the file file.tst utilizing STREAM MODE in 8k blocks and then')
     print('    returns name, byte count, and entropy number of the input file foo.bar.')
     sys.exit()
@@ -102,7 +102,7 @@ if args.f:
         for b in range(256):
             if freq_list[b] > 0:
                 print('  0x', format(b, '02x'), '|', sep='', end='')
-                p = int((freq_list[b] / m) * 72) + 1 #Number of characters to dispaly(80 char. term)
+                p = int((freq_list[b] / m) * 72) + 1 #Number of characters to display(80 char. term)
                 for a in range(p):
                     print ('#', sep='', end='')
                 print('\n', end='')
