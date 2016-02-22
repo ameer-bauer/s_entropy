@@ -33,7 +33,7 @@ if args.h:
     print('  the minimum, and 8 represents the maximum, amount of entropy calculated.')
     print('  For more information on Shannon Entropy please visit the following site:')
     print('    http://www.wikipedia.org/wiki/Entropy_%28information_theory%29')
-    print('\nSYNTAX\n  python(3) s_entropy.py [-h] [-v] [-c] [-s] [-b] [-f [filename]]')
+    print('\nSYNTAX\n  python3 s_entropy.py [-h] [-v] [-c] [-s] [-b] [-f [filename]]')
     print('\nARGUMENTS')
     print('  -h Displays this help page.\n')
     print('  -v Displays the current version of s_entropy.\n')
